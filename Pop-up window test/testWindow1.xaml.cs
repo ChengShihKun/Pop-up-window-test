@@ -30,8 +30,49 @@ namespace Pop_up_window_test
         {
             if (main!=null) {
                 //防止main尚未被建立就拿去使用
-                main.textBoxMM.Text = textBoxII.Text;//變數值傳送
+                int inp = 0;
+                int.TryParse(textBoxII.Text, out inp);
+
+
+
+                //main.textBoxMM.Text = arrayF(inp);//變數值傳送(數列)
+                //main.textBoxMM.Text=recF(inp)+"";//變數值傳送(數項)
+
             }
         }
+        
+
+        string arrayF(int inp) {
+            //陣列版本費是數列
+            string Ans = "F(";;
+            Console.WriteLine("輸入值為：" + inp);
+            Ans += inp + ")：";
+
+            int[] array = new int[inp > 2 ? inp : 2];
+            array[0] = 1;
+            array[1] = 1;
+
+            for (int A = 2; A < inp; A++)
+            {
+                array[A] = array[A - 1] + array[A - 2];
+            }
+
+            foreach (int a in array)
+            {
+                Ans += a + ",";
+            }
+
+            return Ans;
+        }
+
+        int recF(int inp) {
+
+            if (inp<3) {
+                return 1;
+            } else {
+                return recF(inp - 1) + recF(inp - 2);
+            }
+        }
+
     }
 }
